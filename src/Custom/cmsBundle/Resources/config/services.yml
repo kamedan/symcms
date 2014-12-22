@@ -1,0 +1,4 @@
+services:
+#    customcms.example:
+#        class: Custom\cmsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
