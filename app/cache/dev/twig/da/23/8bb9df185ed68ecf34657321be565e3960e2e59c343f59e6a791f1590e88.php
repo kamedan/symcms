@@ -44,16 +44,56 @@ class __TwigTemplate_da238bb9df185ed68ecf34657321be565e3960e2e59c343f59e6a791f15
                     <a href=\"";
         // line 16
         echo $this->env->getExtension('routing')->getPath("customcms_homepage");
-        echo "\">Home</a>
-                </div>
+        echo "\">Home</a> | 
+                    <a href=\"";
+        // line 17
+        echo $this->env->getExtension('routing')->getPath("login");
+        echo "\">Login</a>
+                    ";
+        // line 18
+        if ($this->env->getExtension('security')->isGranted("ROLE_ADMIN")) {
+            // line 19
+            echo "                         | <a href=\"";
+            echo $this->env->getExtension('routing')->getPath("cms_user");
+            echo "\">Users</a> | 
+                        <a href=\"";
+            // line 20
+            echo $this->env->getExtension('routing')->getPath("cms_category");
+            echo "\">Categories</a> |
+                        <a href=\"";
+            // line 21
+            echo $this->env->getExtension('routing')->getPath("cms_page");
+            echo "\">Pages</a> |
+                        ";
+        } elseif ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
+            // line 23
+            echo "                             | <a href=\"";
+            echo $this->env->getExtension('routing')->getPath("cms_page");
+            echo "\">Pages</a> |
+                          
+                    ";
+        }
+        // line 26
+        echo "                    
+                    ";
+        // line 27
+        if (($this->env->getExtension('security')->isGranted("ROLE_USER") || $this->env->getExtension('security')->isGranted("ROLE_ADMIN"))) {
+            // line 28
+            echo "                        <a href=\"";
+            echo $this->env->getExtension('routing')->getPath("logout");
+            echo "\">Logout</a>
+                    ";
+        }
+        // line 30
+        echo "                </div>
             </div>
             ";
-        // line 19
+        // line 32
         $this->displayBlock('body', $context, $blocks);
-        // line 20
+        // line 33
         echo "            ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 21
+        // line 34
         echo "        </div>
     </body>
 </html>
@@ -76,12 +116,12 @@ class __TwigTemplate_da238bb9df185ed68ecf34657321be565e3960e2e59c343f59e6a791f15
         ";
     }
 
-    // line 19
+    // line 32
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 20
+    // line 33
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -98,6 +138,6 @@ class __TwigTemplate_da238bb9df185ed68ecf34657321be565e3960e2e59c343f59e6a791f15
 
     public function getDebugInfo()
     {
-        return array (  85 => 20,  80 => 19,  73 => 7,  70 => 6,  64 => 5,  57 => 21,  54 => 20,  52 => 19,  46 => 16,  35 => 9,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  125 => 33,  120 => 32,  113 => 7,  110 => 6,  104 => 5,  97 => 34,  94 => 33,  92 => 32,  88 => 30,  82 => 28,  80 => 27,  77 => 26,  70 => 23,  65 => 21,  61 => 20,  56 => 19,  54 => 18,  50 => 17,  46 => 16,  35 => 9,  33 => 6,  29 => 5,  23 => 1,);
     }
 }

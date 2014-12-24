@@ -13,7 +13,20 @@
             <div id="header">
                 <p id="logo">Custom CMS</p>
                 <div id="nav">
-                    <a href="{{path('customcms_homepage')}}">Home</a>
+                    <a href="{{path('customcms_homepage')}}">Home</a> | 
+                    <a href="{{path('login')}}">Login</a>
+                    {% if is_granted('ROLE_ADMIN')%}
+                         | <a href="{{path('cms_user')}}">Users</a> | 
+                        <a href="{{path('cms_category')}}">Categories</a> |
+                        <a href="{{path('cms_page')}}">Pages</a> |
+                        {% elseif is_granted('ROLE_USER')%}
+                             | <a href="{{path('cms_page')}}">Pages</a> |
+                          
+                    {% endif %}
+                    
+                    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+                        <a href="{{path('logout')}}">Logout</a>
+                    {% endif %}
                 </div>
             </div>
             {% block body %}{% endblock %}

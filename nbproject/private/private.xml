@@ -6,8 +6,11 @@
             <file>file:/A:/xampp/htdocs/symcms/src/Custom/cmsBundle/Resources/config/routing.yml</file>
             <file>file:/A:/xampp/htdocs/symcms/app/Resources/views/base.html.twig</file>
             <file>file:/A:/xampp/htdocs/symcms/app/config/security.yml</file>
-            <file>file:/A:/xampp/htdocs/symcms/src/Custom/cmsBundle/Controller/UserController.php</file>
+            <file>file:/A:/xampp/htdocs/symcms/src/Custom/cmsBundle/Entity/Category.php</file>
             <file>file:/A:/xampp/htdocs/symcms/src/Custom/cmsBundle/Controller/DefaultController.php</file>
+            <file>file:/A:/xampp/htdocs/symcms/src/Custom/cmsBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/A:/xampp/htdocs/symcms/src/Custom/cmsBundle/Resources/views/Default/display.html.twig</file>
+            <file>file:/A:/xampp/htdocs/symcms/src/Custom/cmsBundle/Entity/Page.php</file>
         </group>
     </open-files>
 </project-private>
