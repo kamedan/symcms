@@ -2,5 +2,11 @@
 
 
 {% block body %}
-    <p>Custom CMS Home Page</p>
+    {% for page in pages %}
+        <div class="page">
+            <h1>{{page.title}}</h1>
+            <p>{{page.content|slice(0,25)}}...
+                <a href="{{path('customcms_page_display',{id: page.id})}}">Read more</a></p>
+        </div>
+    {% endfor %}
 {% endblock %}

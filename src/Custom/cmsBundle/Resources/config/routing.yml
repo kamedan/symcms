@@ -14,6 +14,10 @@ customcms_homepage:
     path:     /
     defaults: { _controller: CustomcmsBundle:Default:index }
     
+customcms_page_display:
+    path:     /page/{id}
+    defaults: { _controller: CustomcmsBundle:Default:display }
+    
 login:
     path: /login
     defaults: { _controller: CustomcmsBundle:Security:login }

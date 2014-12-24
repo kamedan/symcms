@@ -20,7 +20,7 @@ security:
             form_login:
                 login_path: /login
                 check_path: /login_check
-                default_target_path: /
+                default_target_path: /cms/page
             logout:
                 path: /logout
                 target: /

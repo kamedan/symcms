@@ -314,6 +314,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Custom\\cmsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'customcms_homepage',);
         }
 
+        // customcms_page_display
+        if (0 === strpos($pathinfo, '/page') && preg_match('#^/page/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'customcms_page_display')), array (  '_controller' => 'Custom\\cmsBundle\\Controller\\DefaultController::displayAction',));
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // login
