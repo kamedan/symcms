@@ -1,3 +1,7 @@
+customcms_cms_page:
+    resource: "@CustomcmsBundle/Resources/config/routing/page.yml"
+    prefix:   /cms/page
+
 customcms_cms_category:
     resource: "@CustomcmsBundle/Resources/config/routing/category.yml"
     prefix:   /cms/category

@@ -123,6 +123,66 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/cms')) {
+            if (0 === strpos($pathinfo, '/cms/page')) {
+                // cms_page
+                if (rtrim($pathinfo, '/') === '/cms/page') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'cms_page');
+                    }
+
+                    return array (  '_controller' => 'Custom\\cmsBundle\\Controller\\PageController::indexAction',  '_route' => 'cms_page',);
+                }
+
+                // cms_page_show
+                if (preg_match('#^/cms/page/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_page_show')), array (  '_controller' => 'Custom\\cmsBundle\\Controller\\PageController::showAction',));
+                }
+
+                // cms_page_new
+                if ($pathinfo === '/cms/page/new') {
+                    return array (  '_controller' => 'Custom\\cmsBundle\\Controller\\PageController::newAction',  '_route' => 'cms_page_new',);
+                }
+
+                // cms_page_create
+                if ($pathinfo === '/cms/page/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_cms_page_create;
+                    }
+
+                    return array (  '_controller' => 'Custom\\cmsBundle\\Controller\\PageController::createAction',  '_route' => 'cms_page_create',);
+                }
+                not_cms_page_create:
+
+                // cms_page_edit
+                if (preg_match('#^/cms/page/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_page_edit')), array (  '_controller' => 'Custom\\cmsBundle\\Controller\\PageController::editAction',));
+                }
+
+                // cms_page_update
+                if (preg_match('#^/cms/page/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                        $allow = array_merge($allow, array('POST', 'PUT'));
+                        goto not_cms_page_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_page_update')), array (  '_controller' => 'Custom\\cmsBundle\\Controller\\PageController::updateAction',));
+                }
+                not_cms_page_update:
+
+                // cms_page_delete
+                if (preg_match('#^/cms/page/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                        $allow = array_merge($allow, array('POST', 'DELETE'));
+                        goto not_cms_page_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_page_delete')), array (  '_controller' => 'Custom\\cmsBundle\\Controller\\PageController::deleteAction',));
+                }
+                not_cms_page_delete:
+
+            }
+
             if (0 === strpos($pathinfo, '/cms/category')) {
                 // cms_category
                 if (rtrim($pathinfo, '/') === '/cms/category') {
